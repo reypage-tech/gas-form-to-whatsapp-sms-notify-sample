@@ -52,6 +52,7 @@ def main() -> int:
         "{{SCREENSHOTS}}": screenshots_block(config),
         "{{TABS_TABLE}}": tabs_table(config),
         "{{HOW_TO_TRY}}": readme_cfg.get("how_to_try", ""),
+        "{{TWILIO_SETUP}}": readme_cfg.get("twilio_setup", ""),
         "{{HONEST_NOTE}}": HONEST_NOTE,
     }
     for key, value in replacements.items():

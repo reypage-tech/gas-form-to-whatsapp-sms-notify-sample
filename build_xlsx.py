@@ -359,7 +359,11 @@ def sync_code_gs(config: dict) -> None:
     pattern = re.compile(re.escape(marker_start) + r".*?" + re.escape(marker_end), re.DOTALL)
     if not pattern.search(text):
         raise SystemExit("Code.gs missing JOB_CONFIG_JSON markers")
-    text = pattern.sub(injected, text)
+    # Use a replacement function, not a replacement string: re.sub treats
+    # backslashes in a replacement *string* as backreference/escape syntax
+    # (e.g. "\\n" collapses to "\n"), which corrupts the double-escaped JSON
+    # payload whenever a config value contains a backslash or newline.
+    text = pattern.sub(lambda _m: injected, text)
     code_path.write_text(text, encoding="utf-8")
 
 
