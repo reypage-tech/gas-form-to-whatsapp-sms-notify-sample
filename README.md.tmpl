@@ -1,0 +1,28 @@
+# {{TITLE}}
+
+{{WHO_IT_IS_FOR}}
+
+{{EFFECT}}
+
+{{SCREENSHOTS}}
+
+## Tabs
+
+{{TABS_TABLE}}
+
+## How to try it
+
+{{HOW_TO_TRY}}
+
+```bash
+python3 tools/check_sheet_names.py job_config.json
+python3 build_xlsx.py
+python3 test/test_xlsx.py
+python3 tools/make_screens.py
+```
+
+`build_xlsx.py` writes the workbook to `dist/` and keeps `src/Code.gs` in sync with `job_config.json` for the Google Sheets setup path.
+
+## Note
+
+{{HONEST_NOTE}}
