@@ -515,7 +515,7 @@
   "readme": {
     "title": "Form-to-WhatsApp/SMS Notify Queue (sample)",
     "who_it_is_for": "For support or sales teams who want to see how Google Form responses could turn into a per-agent WhatsApp/SMS follow-up queue before any real messaging API is connected.",
-    "effect": "Each fictional form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks mock attempts, and the dashboard shows unsent and failed counts across the whole queue. No WhatsApp Cloud API or Twilio SMS call is made anywhere in this sample. Every status value and response code comes from a mock export, not a live service.",
+    "effect": "Each fictional form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks mock attempts, and the dashboard shows unsent and failed counts across the whole queue. By default no WhatsApp Cloud API or Twilio SMS call is made anywhere in this sample; every status value and response code comes from a mock export, not a live service. An optional Twilio Messages API path can send real SMS/WhatsApp messages, but it stays in dry-run mode (no network call) until a Script Property is explicitly switched on.",
     "tabs": [
       {
         "name": "Dashboard",
@@ -534,6 +534,7 @@
         "purpose": "Agents, channels, statuses, and inquiry types used for dropdown validation"
       }
     ],
-    "how_to_try": "Build the workbook locally, open dist/form_to_whatsapp_sms_notify_queue.xlsx, and edit the light blue cells on Send Queue or Send Log (for example, change a Status to Queued) to see the Dashboard counts and chart update."
+    "how_to_try": "Build the workbook locally, open dist/form_to_whatsapp_sms_notify_queue.xlsx, and edit the light blue cells on Send Queue or Send Log (for example, change a Status to Queued) to see the Dashboard counts and chart update.",
+    "twilio_setup": "This sample includes an optional `src/TwilioNotify.gs` path that can send real SMS/WhatsApp messages through the Twilio Messages API. It defaults to a dry run.\n\nScript Properties (Apps Script editor: Project Settings > Script Properties):\n\n- `TWILIO_ACCOUNT_SID`\n- `TWILIO_AUTH_TOKEN`\n- `TWILIO_FROM` (your Twilio-verified sending number, e.g. `+15551234567`)\n- `DRY_RUN` (defaults to dry run; set to the exact string `false` to send for real)\n\nWhile `DRY_RUN` is unset or anything other than the exact string `false`, no HTTP request is made; the Send Log sheet gets a `dry-run` row instead. No Twilio keys are stored in this repository."
   }
 }

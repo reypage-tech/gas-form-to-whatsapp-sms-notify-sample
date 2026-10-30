@@ -18,10 +18,15 @@
 python3 tools/check_sheet_names.py job_config.json
 python3 build_xlsx.py
 python3 test/test_xlsx.py
+node test/test_twilio_notify.js
 python3 tools/make_screens.py
 ```
 
 `build_xlsx.py` writes the workbook to `dist/` and keeps `src/Code.gs` in sync with `job_config.json` for the Google Sheets setup path.
+
+## Twilio setup (optional, real send)
+
+{{TWILIO_SETUP}}
 
 ## Note
 
