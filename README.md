@@ -1,12 +1,12 @@
 # Form-to-WhatsApp/SMS Notify Queue (sample)
 
-For support or sales teams who want to see how Google Form responses could turn into a per-agent WhatsApp/SMS follow-up queue before any real messaging API is connected.
-
-Each fictional form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks mock attempts, and the dashboard shows unsent and failed counts across the whole queue. By default no WhatsApp Cloud API or Twilio SMS call is made anywhere in this sample; every status value and response code comes from a mock export, not a live service. An optional Twilio Messages API path can send real SMS/WhatsApp messages, but it stays in dry-run mode (no network call) until a Script Property is explicitly switched on.
-
 ![Dashboard](screens/01_dashboard.png)
 
-All data in this sample is fictional.
+Replaces tracking form follow-ups by hand with one queue that shows each message draft, assigned agent, send status and retry count.
+
+For support or sales teams who want to see how Google Form responses could turn into a per-agent WhatsApp/SMS follow-up queue.
+
+Each form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks attempts, and the dashboard shows unsent and failed counts across the whole queue. An optional Twilio Messages API path can send real SMS/WhatsApp messages, but it stays in dry-run mode (no network call) until a Script Property is explicitly switched on.
 
 ![Send Queue](screens/02_send_queue.png)
 ![Send Log](screens/03_send_log.png)
@@ -47,6 +47,4 @@ Script Properties (Apps Script editor: Project Settings > Script Properties):
 
 While `DRY_RUN` is unset or anything other than the exact string `false`, no HTTP request is made; the Send Log sheet gets a `dry-run` row instead. No Twilio keys are stored in this repository.
 
-## Note
-
-All figures are fictional data; checked with LibreOffice recalculation and local tests.
+Note: built and tested with fictional data and local mocks, with dry-run defaults and local checks instead of a live deployment.
