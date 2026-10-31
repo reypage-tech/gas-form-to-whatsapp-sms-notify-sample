@@ -47,4 +47,4 @@ Script Properties (Apps Script editor: Project Settings > Script Properties):
 
 While `DRY_RUN` is unset or anything other than the exact string `false`, no HTTP request is made; the Send Log sheet gets a `dry-run` row instead. No Twilio keys are stored in this repository.
 
-Note: built and tested with fictional data and local mocks, with dry-run defaults and local checks instead of a live deployment.
+Note: built and tested with fictional data and local mocks; no WhatsApp Cloud API or Twilio call is made unless DRY_RUN is switched off; not used in production.

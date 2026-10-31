@@ -17,8 +17,8 @@ TEMPLATE_PATH = ROOT / "README.md.tmpl"
 OUT_PATH = ROOT / "README.md"
 
 HONEST_NOTE = (
-    "Note: built and tested with fictional data and local mocks, with dry-run defaults and local checks instead "
-    "of a live deployment."
+    "Note: built and tested with fictional data and local mocks; no WhatsApp Cloud API or Twilio call is made "
+    "unless DRY_RUN is switched off; not used in production."
 )
 
 
