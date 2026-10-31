@@ -514,8 +514,9 @@
   },
   "readme": {
     "title": "Form-to-WhatsApp/SMS Notify Queue (sample)",
-    "who_it_is_for": "For support or sales teams who want to see how Google Form responses could turn into a per-agent WhatsApp/SMS follow-up queue before any real messaging API is connected.",
-    "effect": "Each fictional form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks mock attempts, and the dashboard shows unsent and failed counts across the whole queue. By default no WhatsApp Cloud API or Twilio SMS call is made anywhere in this sample; every status value and response code comes from a mock export, not a live service. An optional Twilio Messages API path can send real SMS/WhatsApp messages, but it stays in dry-run mode (no network call) until a Script Property is explicitly switched on.",
+    "who_it_is_for": "For support or sales teams who want to see how Google Form responses could turn into a per-agent WhatsApp/SMS follow-up queue.",
+    "effect": "Replaces tracking form follow-ups by hand with one queue that shows each message draft, assigned agent, send status and retry count.",
+    "details": "Each form response becomes a queue row with a message draft, an assigned agent, a send status, and a retry count. A send log tracks attempts, and the dashboard shows unsent and failed counts across the whole queue. An optional Twilio Messages API path can send real SMS/WhatsApp messages, but it stays in dry-run mode (no network call) until a Script Property is explicitly switched on.",
     "tabs": [
       {
         "name": "Dashboard",

@@ -16,7 +16,10 @@ CONFIG_PATH = ROOT / "job_config.json"
 TEMPLATE_PATH = ROOT / "README.md.tmpl"
 OUT_PATH = ROOT / "README.md"
 
-HONEST_NOTE = "All figures are fictional data; checked with LibreOffice recalculation and local tests."
+HONEST_NOTE = (
+    "Note: built and tested with fictional data and local mocks, with dry-run defaults and local checks instead "
+    "of a live deployment."
+)
 
 
 def load_config() -> dict:
@@ -24,13 +27,9 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def screenshots_block(config: dict) -> str:
+def screenshot_lines(config: dict) -> list[str]:
     sheets = config.get("screens", {}).get("sheets", [])
-    lines = []
-    for idx, name in enumerate(sheets):
-        fname = f"screens/{idx + 1:02d}_{slugify(name)}.png"
-        lines.append(f"![{name}]({fname})")
-    return "\n".join(lines)
+    return [f"![{name}](screens/{idx + 1:02d}_{slugify(name)}.png)" for idx, name in enumerate(sheets)]
 
 
 def tabs_table(config: dict) -> str:
@@ -44,12 +43,15 @@ def tabs_table(config: dict) -> str:
 def main() -> int:
     config = load_config()
     readme_cfg = config.get("readme", {})
+    screenshots = screenshot_lines(config)
     text = TEMPLATE_PATH.read_text(encoding="utf-8")
     replacements = {
         "{{TITLE}}": readme_cfg.get("title", config["project"]["title"]),
-        "{{WHO_IT_IS_FOR}}": readme_cfg.get("who_it_is_for", ""),
+        "{{FIRST_SCREENSHOT}}": screenshots[0] if screenshots else "",
         "{{EFFECT}}": readme_cfg.get("effect", ""),
-        "{{SCREENSHOTS}}": screenshots_block(config),
+        "{{WHO_IT_IS_FOR}}": readme_cfg.get("who_it_is_for", ""),
+        "{{DETAILS}}": readme_cfg.get("details", ""),
+        "{{REMAINING_SCREENSHOTS}}": "\n".join(screenshots[1:]),
         "{{TABS_TABLE}}": tabs_table(config),
         "{{HOW_TO_TRY}}": readme_cfg.get("how_to_try", ""),
         "{{TWILIO_SETUP}}": readme_cfg.get("twilio_setup", ""),
